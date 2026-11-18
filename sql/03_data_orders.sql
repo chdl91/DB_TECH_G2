@@ -5,16 +5,16 @@
 --
 -- ID ranges:
 --   customer_id   1 - 999
---   order_id      5001 - 5999   (same ID in orders AND online_order/store_order)
+--   order_id      5001 - 5999   (same ID in cs_orders AND cs_online_order/cs_store_order)
 --   invoice_id    9001 - 9999
 --
--- Insert order: customer -> orders -> online_order / store_order
---               -> order_item -> invoice
+-- Insert order: cs_customer -> cs_orders -> cs_online_order / cs_store_order
+--               -> cs_order_item -> cs_invoice
 --
 -- Rules not enforced by constraints (keep the data consistent manually):
---   - orders.order_type = 'ONLINE' only with a row in online_order,
---     'STORE' only with a row in store_order
---   - every order has >= 1 order_item
+--   - cs_orders.order_type = 'ONLINE' only with a row in cs_online_order,
+--     'STORE' only with a row in cs_store_order
+--   - every order has >= 1 row in cs_order_item
 --   - invoices only for online orders (FK enforces this)
 --   - store orders: no SHIPPED / DELIVERED status
 --
@@ -29,28 +29,28 @@
 --   [ ] do NOT order the "never sold" variant(s) from Peter
 -- =====================================================================
 
--- customer
--- INSERT INTO customer (customer_id, fname, lname, email, phone, address)
+-- cs_customer
+-- INSERT INTO cs_customer (customer_id, fname, lname, email, phone, address)
 --   VALUES (1, '...', '...', '...@example.ch', '...', '...');
 
--- orders (superclass)
--- INSERT INTO orders (order_id, order_date, status, order_type)
+-- cs_orders (superclass)
+-- INSERT INTO cs_orders (order_id, order_date, status, order_type)
 --   VALUES (5001, DATE '2026-09-14', 'DELIVERED', 'ONLINE');
 
--- online_order
--- INSERT INTO online_order (order_id, customer_id, shipping_address, shipping_cost, tracking_number)
+-- cs_online_order
+-- INSERT INTO cs_online_order (order_id, customer_id, shipping_address, shipping_cost, tracking_number)
 --   VALUES (5001, 1, '...', 7.90, '...');
 
--- store_order
--- INSERT INTO store_order (order_id, customer_id, store_id, employee_id, payment_method)
+-- cs_store_order
+-- INSERT INTO cs_store_order (order_id, customer_id, store_id, employee_id, payment_method)
 --   VALUES (5002, NULL, 1, 101, 'CARD');
 
--- order_item
--- INSERT INTO order_item (order_id, variant_id, quantity, unit_price)
+-- cs_order_item
+-- INSERT INTO cs_order_item (order_id, variant_id, quantity, unit_price)
 --   VALUES (5001, 1001, 2, 49.90);
 
--- invoice
--- INSERT INTO invoice (invoice_id, invoice_number, invoice_date, due_date, net_amount,
+-- cs_invoice
+-- INSERT INTO cs_invoice (invoice_id, invoice_number, invoice_date, due_date, net_amount,
 --                      vat_rate, total_amount, payment_status, order_id)
 --   VALUES (9001, 'INV-2026-0001', DATE '2026-09-14', DATE '2026-10-14', 99.80, 8.10, 107.88, 'PAID', 5001);
 
