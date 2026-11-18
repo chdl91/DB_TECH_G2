@@ -7,7 +7,7 @@
 -- ---------------------------------------------------------------------
 -- Q1 · Author: Noé Brönnimann
 -- Question: Which invoices are unpaid and past their due date, with customer name and amount?
--- Technique: JOIN invoice - online_order - customer, date filter
+-- Technique: JOIN cs_invoice - cs_online_order - cs_customer, date filter
 -- Result / explanation: (fill in after running)
 -- ---------------------------------------------------------------------
 -- SELECT ...

@@ -7,7 +7,7 @@
 -- ---------------------------------------------------------------------
 -- Q1 · Author: Peter Zweifel
 -- Question: Which product variants are at or below their reorder level, per store?
--- Technique: Multi-table JOIN (inventory, product_variant, product, store), WHERE filter
+-- Technique: Multi-table JOIN (cs_inventory, cs_product_variant, cs_product, cs_store), WHERE filter
 -- Result / explanation: (fill in after running)
 -- ---------------------------------------------------------------------
 -- SELECT ...

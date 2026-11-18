@@ -25,13 +25,13 @@ A clothing retailer sells through several physical stores and an online shop. Th
 - Deleting a product deletes its variants (composition).
 
 **Inventory**
-- A store can hold stock of many variants, and a variant can be stocked in many stores (M:N, resolved by INVENTORY with quantity on hand and reorder level).
+- A store can hold stock of many variants, and a variant can be stocked in many stores (M:N, resolved by CS_INVENTORY with quantity on hand and reorder level).
 
 **Orders**
 - An order is either an online order or a store order (complete, disjoint specialisation).
 - An online order is always placed by a registered customer; a customer can place zero or more online orders.
 - A store order is processed in exactly one store by exactly one employee. The customer is optional (walk-in customers are not registered).
-- An order contains one or more order items; a variant can appear in many orders (M:N, resolved by ORDER_ITEM). The unit price is stored per item because prices can change after the sale.
+- An order contains one or more order items; a variant can appear in many orders (M:N, resolved by CS_ORDER_ITEM). The unit price is stored per item because prices can change after the sale.
 
 **Invoices**
 - Only online orders are invoiced. An online order has at most one invoice; each invoice belongs to exactly one online order.
@@ -40,7 +40,7 @@ A clothing retailer sells through several physical stores and an online shop. Th
 
 - A store must have at least one employee.
 - An order must have at least one order item.
-- `orders.order_type` must match the subtype table (ONLINE ↔ ONLINE_ORDER, STORE ↔ STORE_ORDER).
+- `cs_orders.order_type` must match the subtype table (ONLINE ↔ CS_ONLINE_ORDER, STORE ↔ CS_STORE_ORDER).
 - Store orders do not use the statuses SHIPPED / DELIVERED.
 
 These would require triggers and are kept consistent through the data loading scripts.

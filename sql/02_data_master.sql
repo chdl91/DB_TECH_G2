@@ -20,29 +20,29 @@
 --   [ ] inventory rows where quantity_on_hand <= reorder_level
 -- =====================================================================
 
--- store
--- INSERT INTO store (store_id, name, address, city) VALUES (1, '...', '...', '...');
+-- cs_store
+-- INSERT INTO cs_store (store_id, name, address, city) VALUES (1, '...', '...', '...');
 
--- employee
--- INSERT INTO employee (employee_id, fname, lname, job_role, hire_date, store_id)
+-- cs_employee
+-- INSERT INTO cs_employee (employee_id, fname, lname, job_role, hire_date, store_id)
 --   VALUES (101, '...', '...', '...', DATE '2024-03-01', 1);
 
--- category
--- INSERT INTO category (category_id, name, gender) VALUES (10, '...', 'WOMEN');
+-- cs_category
+-- INSERT INTO cs_category (category_id, name, gender) VALUES (10, '...', 'WOMEN');
 
--- supplier
--- INSERT INTO supplier (supplier_id, name, contact_person, email, country) VALUES (50, '...', '...', '...', '...');
+-- cs_supplier
+-- INSERT INTO cs_supplier (supplier_id, name, contact_person, email, country) VALUES (50, '...', '...', '...', '...');
 
--- product
--- INSERT INTO product (product_id, name, brand, material, base_price, category_id, supplier_id)
+-- cs_product
+-- INSERT INTO cs_product (product_id, name, brand, material, base_price, category_id, supplier_id)
 --   VALUES (201, '...', '...', '...', 49.90, 10, 50);
 
--- product_variant
--- INSERT INTO product_variant (variant_id, sku, item_size, color, product_id)
+-- cs_product_variant
+-- INSERT INTO cs_product_variant (variant_id, sku, item_size, color, product_id)
 --   VALUES (1001, '...', 'M', '...', 201);
 
--- inventory
--- INSERT INTO inventory (store_id, variant_id, quantity_on_hand, reorder_level)
+-- cs_inventory
+-- INSERT INTO cs_inventory (store_id, variant_id, quantity_on_hand, reorder_level)
 --   VALUES (1, 1001, 12, 5);
 
 COMMIT;

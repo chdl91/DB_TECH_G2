@@ -23,7 +23,7 @@ Database Technology HS26 – group project.
 | 3 | `sql/03_data_orders.sql` | Customers, orders, online/store orders, order items, invoices |
 | 4 | `sql/queries/*.sql` | The project queries, one file per group member |
 
-3. Check: `SELECT table_name FROM user_tables ORDER BY table_name;` returns 13 tables.
+3. Check: `SELECT table_name FROM user_tables WHERE table_name LIKE 'CS\_%' ESCAPE '\' ORDER BY table_name;` returns 13 tables.
 
 ## Repository structure
 
@@ -39,6 +39,7 @@ results/                   query results from FreeSQL (screenshot or CSV per que
 
 ## Working rules
 
+- **All project tables use the prefix `cs_`** (e.g. `cs_customer`, `cs_orders`). Our FreeSQL schema also holds the class tables (SaleCo: `CUSTOMER`, `PRODUCT`, `INVOICE`, `VENDOR`, `LINE`, `PRACTICE_*`), and three of them would otherwise clash with ours. Never drop or change tables without the `cs_` prefix. `00_drop.sql` only drops `cs_` tables.
 - **The scripts are the single source of truth.** Never change tables directly in FreeSQL without updating the script.
 - **Edit only your own files.** That avoids merge conflicts.
 - **Changes to `01_ddl.sql` go through a pull request reviewed by Christian**, because the ERD and relational schema must be updated as well (ERD, schema, tables and queries must describe the same design).
